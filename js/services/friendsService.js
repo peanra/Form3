@@ -23,23 +23,20 @@ angular.module('myApp')
 
 		friendsFactory.friends = [];
 
-		function getFriendsFromStorage(){
+		function init(){
 			var friendsStored = localStorage.getItem('friends');
 
-			console.log(localStorage.getItem('friends'));
-
 			if(localStorage.getItem('friends') !== null){
-				console.log('on passe');
 				friendsFactory.friends = JSON.parse(friendsStored);
 			}
 			else{
 				friendsFactory.friends = friendsFactory.defaultFriends;
+				localStorage.setItem('friends', JSON.stringify(friendsFactory.friends));
 			}
 		}
 
 		// Fonction de récupération des données de la liste déroulante "Postes"
 		friendsFactory.getFriends = function(){
-			friendsFactory.friends = getFriendsFromStorage();
 			return friendsFactory.friends;
 		};
 
@@ -48,6 +45,8 @@ angular.module('myApp')
 			friendsFactory.friends.push(friend);
 			localStorage.setItem('friends', JSON.stringify(friendsFactory.friends));
 		}
+
+		init();
 
 		return friendsFactory;
 	});

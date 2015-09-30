@@ -1,0 +1,67 @@
+<div>
+  <form name="myForm" ng-submit="submitForm()" class="form-group simple-form">
+    <div class="form-group has-feedback">
+      <label class="control-label" for="nom">Nom* :</label>
+      <input class="form-control" type="text" name="nom" ng-model="inputs.nom" ng-required="true" ng-change="checkAlpha()"
+      placeholder="Nom"/>
+      <span ng-show="myForm.nom.$valid && myForm.nom.$dirty" class="glyphicon glyphicon-ok form-control-feedback glyph-ok" aria-hidden="true">
+      </span>
+      <span ng-show="myForm.nom.$invalid && myForm.nom.$dirty" class="glyphicon glyphicon-remove form-control-feedback glyph-ko" aria-hidden="true">
+      </span>
+      <div role="alert">
+        <span class="error" ng-show="myForm.nom.$error.required && myForm.nom.$dirty">
+          Champ obligatoire</span>
+        <span class="error" ng-show="myForm.nom.$error.pattern && myForm.nom.$dirty">
+          Le nom doit être alphabétique</span>
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="control-label" for="fixe">Fixe :</label>
+      <input class="form-control" type="text" name="fixe" ng-model="inputs.fixe" ng-change="checkPhone('fixe')"
+      placeholder="Fixe"/>
+      <span ng-show="myForm.fixe.$valid && myForm.fixe.$dirty" class="glyphicon glyphicon-ok form-control-feedback glyph-ok" aria-hidden="true">
+      </span>
+      <span ng-show="myForm.fixe.$invalid && myForm.fixe.$dirty" class="glyphicon glyphicon-remove form-control-feedback glyph-ko" aria-hidden="true">
+      </span>
+      <div role="alert">
+          <span class="error" ng-show="myForm.fixe.$error.pattern && myForm.fixe.$dirty">
+            Format de téléphone incorrect</span>
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="control-label" for="mobile">Mobile* :</label>
+      <input class="form-control" type="text" name="mobile" ng-model="inputs.mobile" ng-change="checkPhone('mobile')" ng-required="true"
+      placeholder="Mobile"/>
+      <span ng-show="myForm.mobile.$valid && myForm.mobile.$dirty" class="glyphicon glyphicon-ok form-control-feedback glyph-ok" aria-hidden="true">
+      </span>
+      <span ng-show="myForm.mobile.$invalid && myForm.mobile.$dirty" class="glyphicon glyphicon-remove form-control-feedback glyph-ko" aria-hidden="true">
+      </span>
+      <div role="alert">
+        <span class="error" ng-show="myForm.mobile.$error.required && myForm.mobile.$dirty">
+          Champ obligatoire</span>
+        <span class="error" ng-show="myForm.mobile.$error.pattern && myForm.mobile.$dirty">
+          Format de mobile incorrect</span>
+      </div>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="control-label" for="poste">Poste :</label>
+      <select class="form-control" name="poste" ng-model="inputs.poste" ng-options="poste.nom for poste in postes track by poste.id"></select>
+    </div>
+    <div class="form-group has-feedback">
+      <label for="email">Email :</label>
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input class="form-control" type="text" name="email" ng-model="inputs.email" ng-change="checkEmail()" placeholder="Email">
+      </div>
+      <span ng-show="myForm.email.$valid && myForm.email.$dirty" class="glyphicon glyphicon-ok form-control-feedback glyph-ok" aria-hidden="true">
+      </span>
+      <span ng-show="myForm.email.$invalid && myForm.email.$dirty" class="glyphicon glyphicon-remove form-control-feedback glyph-ko" aria-hidden="true">
+      </span>
+      <div role="alert">
+          <span class="error" ng-show="myForm.email.$error.pattern && myForm.email.$dirty">
+            Format d'email incorrect</span>
+      </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Ajouter" ng-disabled="!myForm.$valid"/>
+  </form>
+</div>

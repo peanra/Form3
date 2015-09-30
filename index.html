@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="mainController">
+<head>
+    <meta charset="utf-8">
+    <title>Liste des amis</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/form3.css">
+</head>
+<body>
+	<!-- Page Content -->
+    <div class="jumbotron col-md-8 col-md-offset-3">
+    	<h2>Liste des amis</h2>
+        <label>Search : <input type="text" ng-model="searchText"/></label>
+        <table class="table" id="searchTextResults">
+            <tr>
+                <th>Nom/Prénom</th>
+                <th>Tél.</th>
+                <th>Fixe</th>
+                <th>Mobile</th>
+                <th>Pays</th>
+                <th>Poste</th>
+                <th>Email</th>
+            </tr>
+            <tr ng-repeat="friend in friends | filter : searchText | orderBy : 'nom'">
+                <td>{{ friend.nom }}&nbsp;{{ friend.prenom }}</td>
+                <td>{{ friend.tel }}</td>
+                <td>{{ friend.fixe }}</td>
+                <td>{{ friend.mobile }}</td>
+                <td>{{ friend.pays.nom }}</td>
+                <td>{{ friend.poste.nom }}</td>
+                <td>{{ friend.email }}</td>
+            </tr>
+        </table>
+    	<hr/>
+    	<ul class="list-inline">
+    		<li><a href="#/form1">Ajout1</a></li>
+    		<li><a href="#/form2">Ajout2</a></li>
+            <li><a href="#/form3">Ajout3</a></li>
+    	</ul>
+        <hr/>
+        <h2>{{ title }}</h2>
+        <!-- Injection des vues -->
+        <ng-view></ng-view>
+    </div>
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular-route.min.js"></script>
+    <script src="js/vendor/app.js"></script>
+    <script src="js/controllers/form1.js"></script>
+    <script src="js/controllers/form2.js"></script>
+    <script src="js/controllers/form3.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+    <script src="js/services/selectService.js"></script>
+    <script src="js/services/checkInputService.js"></script>
+    <script src="js/services/friendsService.js"></script>
+</body>
+</html>

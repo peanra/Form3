@@ -1,0 +1,50 @@
+<div>
+	<form name="myForm" ng-submit="submitForm()" class="form-group simple-form">
+		<div class="form-group has-feedback">
+			<label class="control-label" for="nom">Nom* :</label>
+			<input type="text" name="nom" class="form-control" ng-model="inputs.nom"
+			ng-change="checkAlpha('nom')" ng-required="true" placeholder="Nom" />
+			<span ng-show="myForm.nom.$valid && myForm.nom.$dirty" class="glyphicon glyphicon-ok form-control-feedback glyph-ok" aria-hidden="true">
+			</span>
+			<span ng-show="myForm.nom.$invalid && myForm.nom.$dirty" class="glyphicon glyphicon-remove form-control-feedback glyph-ko" aria-hidden="true">
+			</span>
+			<div role="alert">
+			    <span class="error" ng-show="myForm.nom.$error.required && myForm.nom.$dirty">
+			      Champ obligatoire</span>
+			    <span class="error" ng-show="myForm.nom.$error.pattern && myForm.nom.$dirty">
+			      Format incorrect</span>
+			</div>
+		</div>
+		<div class="form-group has-feedback">
+			<label clas="control-label" for="prenom">Prénom* :</label>
+			<input type="text" name="prenom" class="form-control" ng-model="inputs.prenom"
+			ng-change="checkAlpha('prenom')" ng-required="true" placeholder="Prénom" />
+			<span ng-show="myForm.prenom.$valid && myForm.prenom.$dirty" class="glyphicon glyphicon-ok form-control-feedback glyph-ok" aria-hidden="true">
+			</span>
+			<span ng-show="myForm.prenom.$invalid && myForm.prenom.$dirty" class="glyphicon glyphicon-remove form-control-feedback glyph-ko" aria-hidden="true">
+			</span>
+			<div role="alert">
+			    <span class="error" ng-show="myForm.prenom.$error.required && myForm.prenom.$dirty">
+			      Champ obligatoire</span>
+			    <span class="error" ng-show="myForm.prenom.$error.pattern && myForm.prenom.$dirty">
+			      Format incorrect</span>
+			</div>
+		</div>
+		<div class="form-group has-feedback">
+			<label class="control-label" for="tel">Tel* :</label>
+			<input type="text" name="tel" class="form-control" ng-model="inputs.tel"
+			ng-change="checkPhone()" ng-required="true" placeholder="Téléphone" />
+			<span ng-show="myForm.tel.$valid && myForm.tel.$dirty" class="glyphicon glyphicon-ok form-control-feedback glyph-ok" aria-hidden="true">
+			</span>
+			<span ng-show="myForm.tel.$invalid && myForm.tel.$dirty" class="glyphicon glyphicon-remove form-control-feedback glyph-ko" aria-hidden="true">
+			</span>
+			<div role="alert">
+			    <span class="error" ng-show="myForm.tel.$error.required && myForm.tel.$dirty">
+			      Champ obligatoire</span>
+			    <span class="error" ng-show="myForm.tel.$error.pattern && myForm.tel.$dirty">
+			      Format incorrect</span>
+			</div>
+		</div>
+		<input type="submit" class="btn btn-primary" value="Ajouter" ng-disabled="!myForm.$valid"/>
+	</form>
+</div>
